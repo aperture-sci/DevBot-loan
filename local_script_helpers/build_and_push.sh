@@ -4,28 +4,27 @@
 cd ..
 
 # Get the username and password from environment variables
-quayIoUsername=lrochette
-quayIoPassword=$dev_bot_pass
-
+username=lrochette
+password=$dev_bot_pass
+repository=docker.io
 # Define the Docker image name and tag
-dockerImageName="$quayIoUsername/devbot-loan"
+imageName="$username/devbot-loan"
 
 # Get the latest release tag from GitHub
 #latestRelease=$(curl -s https://api.github.com/repos/aperture-sci/DevBot-loan/releases/latest | jq -r .tag_name)
 latestRelease=0.0.1
 
 # Build the Docker image with the latest release tag
-docker build -t "$dockerImageName:$latestRelease" .
+docker build -t "$imageName:$latestRelease" .
 
-# Log in to the quay.io container registry
-docker login quay.io -u "$quayIoUsername" -p "$quayIoPassword"
+# Log in to the $repository container registry
+docker login $repository -u "$username" -p "$password"
 
-# Tag the Docker image with the quay.io repository and latest release tag
-quayIoRepository="quay.io/lrochette/devbot-loan"
-docker tag "$dockerImageName:$latestRelease" "$quayIoRepository:$latestRelease"
+# Tag the Docker image with the $repository repository and latest release tag
+#docker tag "$imageName:$latestRelease" "quay.io/$imageName:$latestRelease"
 
-# Push the Docker image to the quay.io container registry
-docker push "$quayIoRepository:$latestRelease"
+# Push the Docker image to the $repository container registry
+docker push "$repository/$imageName:$latestRelease"
 
 # Clean up: remove the local Docker image
-docker rmi "$dockerImageName:$latestRelease"
+#docker rmi "$imageName:$latestRelease"
