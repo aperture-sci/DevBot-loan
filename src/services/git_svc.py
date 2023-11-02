@@ -10,7 +10,6 @@ from typing import Dict, List
 from blob_constants import (
     SERVICE1_COMMIT_MSGS,
     SERVICE2_COMMIT_MSGS,
-    SERVICE3_COMMIT_MSGS,
     PYTHON_COMMANDS,
     BRANCHES_NAMES_PREFIXES,
     BRANCHES_NAMES,
@@ -173,8 +172,6 @@ class GitService:
                 commit_msg = f"{random.choice(SERVICE1_COMMIT_MSGS)}{postfix}"
             case 2:
                 commit_msg = f"{random.choice(SERVICE2_COMMIT_MSGS)}{postfix}"
-            case 3:
-                commit_msg = f"{random.choice(SERVICE3_COMMIT_MSGS)}{postfix}"
             case _:
                 commit_msg = f"{random.choice(SERVICE_COMMIT_MSGS)}{postfix}"
         return commit_msg
