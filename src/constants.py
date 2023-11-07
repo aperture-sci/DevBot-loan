@@ -1,5 +1,5 @@
-APP_SERVICES_LIST = ["loan", "interest"]
-APP_SERVICES_COUNT=2
+APP_SERVICES_LIST = ["loan", "interest", "accounts", "orders", "membership"]
+APP_SERVICES_COUNT=5
 
 DEVBOT_TASKS = ['dev', 'merge_prs', 'close_prs', 'clean_changes']
 GH_API_BASE_URL = "https://api.github.com"

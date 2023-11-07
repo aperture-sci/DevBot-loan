@@ -7,7 +7,7 @@
   "MAX_JIRA_TICKETS": 1,
   "GIT_USERS_COUNT": 1,
   "MIN_COMMITS": 1,
-  "MAX_COMMITS": 2,
-  "APP_SERVICES_COUNT": 2,
-  "APP_SERVICES_LIST": ["loan", "interest"]
+  "MAX_COMMITS": 3,
+  "APP_SERVICES_COUNT": 5,
+  "APP_SERVICES_LIST": ["loan", "interest", "accounts", "orders", "membership"]
 }

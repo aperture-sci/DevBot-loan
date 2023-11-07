@@ -12,7 +12,7 @@ imageName="$username/devbot-loan"
 
 # Get the latest release tag from GitHub
 #latestRelease=$(curl -s https://api.github.com/repos/aperture-sci/DevBot-loan/releases/latest | jq -r .tag_name)
-latestRelease=0.0.3
+latestRelease=0.0.4
 
 # Build the Docker image with the latest release tag
 docker build -t "$imageName:$latestRelease" .
