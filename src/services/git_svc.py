@@ -17,7 +17,7 @@ from blob_constants import (
     BRANCHES_NAMES_PREFIXES,
     BRANCHES_NAMES,
     PULL_REQUESTS_TITLES,
-    SERVICE_COMMIT_MSGS,
+    SERVICE_COMMIT_MSGS
 )
 from constants import MAX_GITHUB_PAGES
 from helpers.generic_functions import timestamp
@@ -175,6 +175,13 @@ class GitService:
                 commit_msg = f"{random.choice(SERVICE1_COMMIT_MSGS)}{postfix}"
             case 2:
                 commit_msg = f"{random.choice(SERVICE2_COMMIT_MSGS)}{postfix}"
+            case 3:
+                commit_msg = f"{random.choice(SERVICE3_COMMIT_MSGS)}{postfix}"
+            case 4:
+                commit_msg = f"{random.choice(SERVICE4_COMMIT_MSGS)}{postfix}"
+            case 5:
+                commit_msg = f"{random.choice(SERVICE5_COMMIT_MSGS)}{postfix}"
+
             case _:
                 commit_msg = f"{random.choice(SERVICE_COMMIT_MSGS)}{postfix}"
         return commit_msg
