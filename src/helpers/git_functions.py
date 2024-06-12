@@ -33,17 +33,20 @@ def get_github_headers(token: str) -> Dict:
 
 
 def get_default_branch(url: str, token: str, logger: logging.Logger) -> str:
-    return "main"
-    # headers = get_github_headers(token)
-    # response = requests.get(url, headers=headers)
-    #
-    # # Check if the response was successful
-    # if response.status_code == 200:
-    #     handle_success(f"Repo {url} info was retrieved successfully", logger)
-    #     # Parse the HTML content
-    #     soup = BeautifulSoup(response.content, 'html.parser')
-    #     if not soup.find('span', {'class': 'css-truncate-target'}).text:
-    #         handle_error("not able to determine repo default branch - html parser could not find it", logger)
-    #     return soup.find('span', {'class': 'css-truncate-target'}).text
-    # else:
-    #     handle_error(f"default branch for {url} was not retrieved successfully: HTTP {response.status_code}", logger)
+    headers = get_github_headers(token)
+    response = requests.get(url, headers=headers)
+
+    # Check if the response was successful
+    if response.status_code == 200:
+        handle_success(f"Repo {url} info was retrieved successfully", logger)
+        # Parse the HTML content
+        soup = BeautifulSoup(response.content, 'html.parser')
+        # Debugging print output
+        try:
+            if not soup.find('span', {'class': 'css-truncate-target'}).text:
+                handle_error("not able to determine repo default branch - html parser could not find it", logger)
+            return soup.find('span', {'class': 'css-truncate-target'}).text
+        except AttributeError:  # If unable to parse, just return main as default
+            return "main"
+    else:
+        handle_error(f"default branch for {url} was not retrieved successfully: HTTP {response.status_code}", logger)
