@@ -15,7 +15,7 @@ RUN apk add gcc python3-dev musl-dev linux-headers
 
 # Set Git user name and user email
 RUN git config --global user.name "lrochette"
-RUN git config --global user.email "laurent.rochette@codefresh.io"
+RUN git config --global user.email "laurent.rochette@octopus.com"
 
 # Install requirements from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
